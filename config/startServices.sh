@@ -1,5 +1,7 @@
 #!/bin/bash
 
+env
+
 /opt/fixConfig.sh
 
 mkdir /run/sshd
