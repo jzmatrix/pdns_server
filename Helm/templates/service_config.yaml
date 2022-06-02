@@ -3,12 +3,25 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ $root.Values.serviceName }}-int-{{ .server }}
+  name: {{ $root.Values.serviceName }}-tcp-{{ .server }}
   namespace: default
 spec:
   ports:
-    - port: 3306
+    - port: 53
       protocol: TCP
+  selector:
+    app: {{ $root.Values.serviceName }}-{{ .server }}
+  clusterIP: {{ .ip }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $root.Values.serviceName }}-udp-{{ .server }}
+  namespace: default
+spec:
+  ports:
+    - port: 53
+      protocol: UDP
   selector:
     app: {{ $root.Values.serviceName }}-{{ .server }}
   clusterIP: {{ .ip }}

@@ -1,9 +1,8 @@
 #!/bin/bash
 
-env
-
 /opt/fixConfig.sh
 
+# Snippet to start daemon for local debug
 #mkdir /run/sshd
 #mkdir /var/run/sshd
 #/usr/sbin/sshd -D
