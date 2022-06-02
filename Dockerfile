@@ -9,6 +9,7 @@ RUN apt update && \
 ################################################################################
 ADD config/startServices.sh /opt/startServices.sh
 ADD config/fixConfig.sh /opt/fixConfig.sh
+ADD config/pdns /tmp/powerdns
 ################################################################################
 RUN chmod 755 /opt/startServices.sh && \
     chmod 755 /opt/fixConfig.sh
