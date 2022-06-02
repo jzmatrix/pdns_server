@@ -3,6 +3,7 @@
 cp -r /tmp/powerdns /etc/
 
 sed -i "s|&&IPLIST&&|$iplist|g" /etc/powerdns/pdns.conf
+sed -i "s|&&IPLIST2&&|$iplist2|g" /etc/powerdns/pdns.conf
 sed -i "s|&&APIKEY&&|$apikey|g" /etc/powerdns/pdns.conf
 
 sed -i "s|&&DBSERVER&&|$dbServer|g" /etc/powerdns/pdns.d/pdns.local.gmysql.conf
