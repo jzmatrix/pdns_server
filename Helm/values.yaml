@@ -5,15 +5,19 @@ dnsServers:
   - server: cdns-m
     dbip: 10.43.10.115
     ip: 10.43.11.115
+    role: master
   - server: cdns-1
     dbip: 10.43.10.116
     ip: 10.43.11.116
+    role: slave
   - server: cdns-2
     dbip: 10.43.10.117
     ip: 10.43.11.117
+    role: slave
   - server: cdns-3
     dbip: 10.43.10.118
     ip: 10.43.11.118
+    role: slave
 
 replicaCount: 1
 

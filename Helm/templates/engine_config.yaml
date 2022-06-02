@@ -24,6 +24,8 @@ spec:
         env:
           - name: dbServer
             value: "{{ .dbip }}"
+          - name: role
+            value: "{{ .role }}"
         envFrom:
             - secretRef:
                 name: dbconfig

@@ -2,6 +2,15 @@
 
 cp -r /tmp/powerdns /etc/
 
+if [[ $role -eq "slave" ]]
+then
+  sed -i "s|&&MASTER&&|no|g" /etc/powerdns/pdns.conf
+  sed -i "s|&&SLAVE&&|yes|g" /etc/powerdns/pdns.conf
+else
+  sed -i "s|&&MASTER&&|yes|g" /etc/powerdns/pdns.conf
+  sed -i "s|&&SLAVE&&|no|g" /etc/powerdns/pdns.conf
+fi
+
 sed -i "s|&&IPLIST&&|$iplist|g" /etc/powerdns/pdns.conf
 sed -i "s|&&IPLIST2&&|$iplist2|g" /etc/powerdns/pdns.conf
 sed -i "s|&&APIKEY&&|$apikey|g" /etc/powerdns/pdns.conf
