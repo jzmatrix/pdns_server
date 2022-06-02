@@ -1,0 +1,36 @@
+{{- $root := . -}}
+{{- range .Values.dnsServers }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: {{ $root.Values.namespace }}
+  name: {{ $root.Values.serviceName }}-{{ .server }}
+spec:
+  serviceName: "{{ $root.Values.serviceName }}-{{ .server }}"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ $root.Values.serviceName }}-{{ .server }}
+  template:
+    metadata:
+      labels:
+        app: {{ $root.Values.serviceName }}-{{ .server }}
+    spec:
+      nodeName: {{ .server }}
+      containers:
+      - image: {{ $root.Values.image.name }}:{{ $root.Values.image.tag }}
+        name: {{ $root.Values.serviceName }}
+        imagePullPolicy: Always
+        env:
+          - name: dbServer
+            value: "{{ .dbip }}"
+        envFrom:
+            - secretRef:
+                name: dbconfig
+            - secretRef:
+                name: dnsconfig
+        ports:
+        - containerPort: 3306
+          name: {{ $root.Values.serviceName }}-{{ .server }}
+---
+{{- end }}  

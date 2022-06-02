@@ -1,0 +1,38 @@
+namespace: default
+serviceName: ""
+
+dnsServers:
+  - server: cdns-m
+    dbip: 10.43.10.115
+    ip: 10.43.11.115
+  - server: cdns-1
+    dbip: 10.43.10.116
+    ip: 10.43.11.116
+  - server: cdns-2
+    dbip: 10.43.10.117
+    ip: 10.43.11.117
+  - server: cdns-3
+    dbip: 10.43.10.118
+    ip: 10.43.11.118
+
+replicaCount: 1
+
+image:
+  repository: ""
+  name: ""
+  tag: ""
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+
+imagePullSecrets: {}
+nameOverride: ""
+fullnameOverride: ""
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
