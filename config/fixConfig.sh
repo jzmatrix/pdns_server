@@ -11,8 +11,8 @@ else
   sed -i "s|&&SLAVE&&|no|g" /etc/powerdns/pdns.conf
 fi
 
-sed -i "s|&&IPLIST&&|$iplist|g" /etc/powerdns/pdns.conf
-sed -i "s|&&IPLIST2&&|$iplist2|g" /etc/powerdns/pdns.conf
+sed -i "s|&&ONLYNOTIFY&&|$onlynotify|g" /etc/powerdns/pdns.conf
+sed -i "s|&&ALSONOTIFY&&|$alsonotify|g" /etc/powerdns/pdns.conf
 sed -i "s|&&APIKEY&&|$apikey|g" /etc/powerdns/pdns.conf
 sed -i "s|&&AXFRIPS&&|$axfrips|g" /etc/powerdns/pdns.conf
 sed -i "s|&&IPMASTER&&|$ipmaster|g" /etc/powerdns/pdns.conf
