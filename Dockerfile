@@ -1,7 +1,7 @@
 FROM debian:10
 ################################################################################
-RUN apt update && \
-    apt upgrade && \
+RUN apt -y update && \
+    apt -y upgrade && \
     apt -y install openssh-server passwd lsb-release pdns-server pdns-backend-mysql vim && \
     /bin/rm -f /etc/localtime && \
     /bin/cp /usr/share/zoneinfo/America/New_York /etc/localtime && \
