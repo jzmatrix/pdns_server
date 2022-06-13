@@ -3,12 +3,13 @@
 cp -r /tmp/powerdns /etc/
 
 echo $role
-if [[ $role -eq "slave" ]]
+if [[ $role == "slave" ]]
 then
   sed -i "s|&&MASTER&&|no|g" /etc/powerdns/pdns.conf
   sed -i "s|&&SLAVE&&|yes|g" /etc/powerdns/pdns.conf
 fi
-if [[ $role -eq "master" ]]
+if [[ $role == "master" ]]
+then
   sed -i "s|&&MASTER&&|yes|g" /etc/powerdns/pdns.conf
   sed -i "s|&&SLAVE&&|no|g" /etc/powerdns/pdns.conf
 fi
